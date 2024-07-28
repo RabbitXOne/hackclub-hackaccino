@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+
+  <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+</head>
+
+<body>
+  <a-scene>
+    <a-assets>
+      <img id="cat-and-plum-blossoms" src="img/cat-and-plum-blossoms.jpg">
+    </a-assets>
+
+    <a-sky color="#ADAEAD"></a-sky>
+    <!-- <a-plane id="floor" position="0 0 0" color="#D8D8D8" rotation="-90 0 0" width="10" height="10"></a-plane> -->
+    <a-plane static-body id="floor" src="https://cdn.aframe.io/a-painter/images/floor.jpg" rotation="-90 0 0" scale="150 150 150"></a-plane>
+
+
+
+    <a-camera>
+      <a-cursor intersection-spawn="event: click"></a-cursor>
+    </a-camera>
+
+    <a-plane id="wall" position="0 2 -6" color="gray" rotation="0 0 0" width="10" height="4"></a-plane>
+
+    <!-- 4 IMAGES -->
+    <a-image id="img1" position="0 2 -5.9" src="img/cat-and-plum-blossoms.jpg" width="0.8366666666666667"
+      height="2"></a-image>
+    <a-text id="img1text1" value="Cat and Plum Blossoms" position="0 1.1 -5.9" color="white" width="4"
+      align="center"></a-text>
+
+    <!-- BOX WITH A BUTTON TO DRAW 4 RANDOM IMAGES -->
+    <a-box position="6 0 -6"></a-box>
+    <a-box id="button" color="red" position="6 0.4 -5.85" width="0.5" height="0.5" depth="0.5"></a-box>
+    <a-text id="buttonText" value="Click to draw" position="5.8 0.6 -6.3" color="black" rotation="-90 0 0"
+      width="1.4"></a-text>
+
+
+  </a-scene>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
