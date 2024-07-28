@@ -12,32 +12,43 @@
 
 <body>
   <a-scene>
-    <a-assets>
-      <img id="cat-and-plum-blossoms" src="img/cat-and-plum-blossoms.jpg">
-    </a-assets>
-
     <a-sky color="#ADAEAD"></a-sky>
-    <!-- <a-plane id="floor" position="0 0 0" color="#D8D8D8" rotation="-90 0 0" width="10" height="10"></a-plane> -->
-    <a-plane static-body id="floor" src="https://cdn.aframe.io/a-painter/images/floor.jpg" rotation="-90 0 0" scale="150 150 150"></a-plane>
-
+    <a-plane static-body id="floor" src="https://cdn.aframe.io/a-painter/images/floor.jpg" rotation="-90 0 0"
+      scale="150 150 150"></a-plane>
 
 
     <a-camera>
       <a-cursor intersection-spawn="event: click"></a-cursor>
     </a-camera>
 
-    <a-plane id="wall" position="0 2 -6" color="gray" rotation="0 0 0" width="10" height="4"></a-plane>
+    <a-plane id="wall" position="0 2 -9" color="gray" rotation="0 0 0" width="10" height="4"></a-plane>
 
     <!-- 4 IMAGES -->
-    <a-image id="img1" position="0 2 -5.9" src="img/cat-and-plum-blossoms.jpg" width="0.8366666666666667"
-      height="2"></a-image>
-    <a-text id="img1text1" value="Cat and Plum Blossoms" position="0 1.1 -5.9" color="white" width="4"
-      align="center"></a-text>
+    <a-plane id="img1" position="-3.5 2 -8.9" src="#cat-and-plum-blossoms" width="1" height="1"></a-plane>
+    <a-text id="img1title" value="---" position="-3.5 1.1 -8.9" color="white" width="4" align="center"></a-text>
+    <a-text id="img1author" value="---" position="-3.5 0.9 -8.9" color="white" width="4" align="center"></a-text>
+    <a-text id="img1date" value="---" position="-3.5 0.7 -8.9" color="white" width="4" align="center"></a-text>
+
+    <a-image id="img2" position="-1 2 -8.9" src="" width="1" height="1"></a-image>
+    <a-text id="img2title" value="---" position="-1 1.1 -8.9" color="white" width="4" align="center"></a-text>
+    <a-text id="img2author" value="---" position="-1 0.9 -8.9" color="white" width="4" align="center"></a-text>
+    <a-text id="img2date" value="---" position="-1 0.7 -8.9" color="white" width="4" align="center"></a-text>
+
+    <a-image id="img3" position="1.5 2 -8.9" src="" width="1" height="1"></a-image>
+    <a-text id="img3title" value="---" position="1.5 1.1 -8.9" color="white" width="4" align="center"></a-text>
+    <a-text id="img3author" value="---" position="1.5 0.9 -8.9" color="white" width="4" align="center"></a-text>
+    <a-text id="img3date" value="---" position="1.5 0.7 -8.9" color="white" width="4" align="center"></a-text>
+
+    <a-image id="img4" position="4 2 -8.9" src="" width="1" height="1"></a-image>
+    <a-text id="img4title" value="---" position="4 1.1 -8.9" color="white" width="4" align="center"></a-text>
+    <a-text id="img4author" value="---" position="4 0.9 -8.9" color="white" width="4" align="center"></a-text>
+    <a-text id="img4date" value="---" position="4 0.7 -8.9" color="white" width="4" align="center"></a-text>
 
     <!-- BOX WITH A BUTTON TO DRAW 4 RANDOM IMAGES -->
-    <a-box position="6 0 -6"></a-box>
-    <a-box id="button" color="red" position="6 0.4 -5.85" width="0.5" height="0.5" depth="0.5"></a-box>
-    <a-text id="buttonText" value="Click to draw" position="5.8 0.6 -6.3" color="black" rotation="-90 0 0"
+    <a-box position="0 0 -2"></a-box>
+    <a-box id="button" color="red" position="0 0.4 -1.85" width="0.5" height="0.5" depth="0.5"
+      onclick="drawImages()"></a-box>
+    <a-text id="buttonText" value="Click to draw" position="-0.2 0.6 -2.3" color="black" rotation="-90 0 0"
       width="1.4"></a-text>
 
 
