@@ -160,6 +160,33 @@ const images = [
     "src": "view-of-langelinie-untitled-verso.jpg",
     "width": "1.043333333333333",
     "height": "1"
+  },
+  {
+    "title": "The Bacchanal of the Andrians",
+    "author": "Titian",
+    "date": "1523 - 1524",
+    "additional_info": "Style: High Renaissance\nSeries: Mythological paintings (poesie) for Philip II (1553-1562)\nGenre: mythological painting\nMedia: oil, canvas\nLocation: Museo del Prado, Madrid, Spain\nDimensions: 175 x 193 cm",
+    "src": "the-bacchanal-of-the-andrians.jpg",
+    "width": "1.105",
+    "height": "1"
+  },
+  {
+    "title": "Still Life With Watermelons",
+    "author": "Constantin Stahi",
+    "date": "1912",
+    "additional_info": "Style: Realism\nGenre: still life",
+    "src": "still-life-with-watermelons.jpg",
+    "width": "1.35623869801085",
+    "height": "1"
+  },
+  {
+    "title": "Self Portrait with a Palette",
+    "author": "Edouard Manet",
+    "date": "1879; Paris, France ",
+    "additional_info": "Style: Impressionism\nGenre: self-portrait\nMedia: oil, canvas\nLocation: Steven A. Cohen Collection, Greenwich, CT, US\nDimensions: 83 x 67 cm",
+    "src": "self-portrait-with-a-palette.jpg",
+    "width": "1",
+    "height": "1.221995926680244"
   }
 ];
 
@@ -180,6 +207,9 @@ function drawImages() {
   }
 
   for (let i = 1; i <= 4; i++) {
+
+    moreInfoClose(i);
+
     const image = images[imagesToShow[i - 1]];
     let imageElement = document.getElementById("img" + i);
     imageElement.parentNode.removeChild(imageElement);
@@ -216,16 +246,76 @@ function drawImages() {
 }
 
 function moreInfo(imageElementIndex) {
-  const src = document.getElementById("img" + imageElementIndex).getAttribute("src");
+  var src = document.getElementById("img" + imageElementIndex).getAttribute("src");
+
+  if (src == "") {
+    return;
+  }
+
+  // Remove "img/" part from src variable
+  src = src.substring(4);
+
+  const image = images.find(img => img.src === src);
 
   // If camera's distance to object is less than 3.5
   const camera = document.querySelector('a-camera');
   const object = document.getElementById("img" + imageElementIndex);
   const distance = camera.object3D.position.distanceTo(object.object3D.position);
 
-  if (distance < 3.5) {
-    console.log('x');
-  } else {
-    console.log('not');
+  let moreInfoOpen = object.getAttribute("moreInfo");
+  if (moreInfo && moreInfo == "open") {
+    return;
   }
+
+  if (!image.additional_info || image.additional_info == "") {
+    return;
+  }
+
+  // if (distance < 3.5) {
+
+  object.setAttribute("moreInfo", "open")
+
+  let moreInfoElement = document.createElement("a-plane");
+  let moreInfoText = document.createElement("a-text");
+  let moreInfoCloseText = document.createElement("a-text");
+
+  moreInfoElement.setAttribute("id", "moreInfoElement" + imageElementIndex);
+  moreInfoText.setAttribute("id", "moreInfoText" + imageElementIndex);
+  moreInfoCloseText.setAttribute("id", "moreInfoCloseText" + imageElementIndex);
+  let objectPosition = object.object3D.position;
+  moreInfoElement.setAttribute("position", `${objectPosition.x} ${objectPosition.y} ${objectPosition.z + 0.1}`);
+  moreInfoText.setAttribute("position", `${objectPosition.x - 0.9} ${objectPosition.y + 1.2} ${objectPosition.z + 0.13}`);
+  moreInfoCloseText.setAttribute("position", `${objectPosition.x - 0.9} ${objectPosition.y - 1.2} ${objectPosition.z + 0.13}`);
+  moreInfoElement.setAttribute("width", "2");
+  moreInfoElement.setAttribute("height", "3");
+  moreInfoElement.setAttribute("color", "black");
+
+  moreInfoText.setAttribute("value", image.additional_info);
+  moreInfoText.setAttribute("width", "2");
+
+  moreInfoCloseText.setAttribute("value", "Click to close");
+  moreInfoCloseText.setAttribute("color", "red")
+
+  document.querySelector('a-scene').appendChild(moreInfoElement);
+  document.querySelector('a-scene').appendChild(moreInfoText);
+  document.querySelector('a-scene').appendChild(moreInfoCloseText);
+
+  moreInfoElement.setAttribute("onclick", "moreInfoClose(" + imageElementIndex + ")")
+  // }
+}
+
+function moreInfoClose(imageElementIndex) {
+  var moreInfoElement = document.getElementById("moreInfoElement" + imageElementIndex);
+  var moreInfoText = document.getElementById("moreInfoText" + imageElementIndex);
+  var moreInfoCloseText = document.getElementById("moreInfoCloseText" + imageElementIndex);
+
+  if (!moreInfoElement || !moreInfoText || !moreInfoCloseText) {
+    return;
+  }
+
+  moreInfoElement.parentNode.removeChild(moreInfoElement);
+  moreInfoText.parentNode.removeChild(moreInfoText);
+  moreInfoCloseText.parentNode.removeChild(moreInfoCloseText);
+
+  moreInfoElement.removeAttribute("moreInfo");
 }
