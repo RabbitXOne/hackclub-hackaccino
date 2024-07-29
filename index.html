@@ -16,6 +16,9 @@
     <a-plane static-body id="floor" src="https://cdn.aframe.io/a-painter/images/floor.jpg" rotation="-90 0 0"
       scale="150 150 150"></a-plane>
 
+    <a-image rotation="-90 0 0" src="img/public_domain.png" position="-4 0.15 -7" width="1" height="1"></a-image>
+    <a-text value="All images presented in this\nsite are in public domain" rotation="-90 0 0" position="-3.3 0.15 -7" width="4" height="4"></a-text>
+
 
     <a-camera>
       <a-cursor intersection-spawn="event: click"></a-cursor>
@@ -24,31 +27,31 @@
     <a-plane id="wall" position="0 2 -9" color="gray" rotation="0 0 0" width="10" height="4"></a-plane>
 
     <!-- 4 IMAGES -->
-    <a-plane id="img1" position="-3.5 2 -8.9" src="#cat-and-plum-blossoms" width="1" height="1"></a-plane>
+    <a-plane id="img1" position="-3.5 2 -8.9" src="" width="1" height="1" onclick="moreInfo(1)"></a-plane>
     <a-text id="img1title" value="---" position="-3.5 1.1 -8.9" color="white" width="4" align="center"></a-text>
     <a-text id="img1author" value="---" position="-3.5 0.9 -8.9" color="white" width="4" align="center"></a-text>
     <a-text id="img1date" value="---" position="-3.5 0.7 -8.9" color="white" width="4" align="center"></a-text>
 
-    <a-image id="img2" position="-1 2 -8.9" src="" width="1" height="1"></a-image>
+    <a-image id="img2" position="-1 2 -8.9" src="" width="1" height="1" onclick="moreInfo(2)"></a-image>
     <a-text id="img2title" value="---" position="-1 1.1 -8.9" color="white" width="4" align="center"></a-text>
     <a-text id="img2author" value="---" position="-1 0.9 -8.9" color="white" width="4" align="center"></a-text>
     <a-text id="img2date" value="---" position="-1 0.7 -8.9" color="white" width="4" align="center"></a-text>
 
-    <a-image id="img3" position="1.5 2 -8.9" src="" width="1" height="1"></a-image>
+    <a-image id="img3" position="1.5 2 -8.9" src="" width="1" height="1" onclick="moreInfo(3)"></a-image>
     <a-text id="img3title" value="---" position="1.5 1.1 -8.9" color="white" width="4" align="center"></a-text>
     <a-text id="img3author" value="---" position="1.5 0.9 -8.9" color="white" width="4" align="center"></a-text>
     <a-text id="img3date" value="---" position="1.5 0.7 -8.9" color="white" width="4" align="center"></a-text>
 
-    <a-image id="img4" position="4 2 -8.9" src="" width="1" height="1"></a-image>
+    <a-image id="img4" position="4 2 -8.9" src="" width="1" height="1" onclick="moreInfo(4)"></a-image>
     <a-text id="img4title" value="---" position="4 1.1 -8.9" color="white" width="4" align="center"></a-text>
     <a-text id="img4author" value="---" position="4 0.9 -8.9" color="white" width="4" align="center"></a-text>
     <a-text id="img4date" value="---" position="4 0.7 -8.9" color="white" width="4" align="center"></a-text>
 
     <!-- BOX WITH A BUTTON TO DRAW 4 RANDOM IMAGES -->
     <a-box position="0 0 -2"></a-box>
-    <a-box id="button" color="red" position="0 0.4 -1.85" width="0.5" height="0.5" depth="0.5"
+    <a-box id="button" color="red" position="0 0.4 -2.1" width="0.5" height="0.5" depth="0.5"
       onclick="drawImages()"></a-box>
-    <a-text id="buttonText" value="Click to draw" position="-0.2 0.6 -2.3" color="black" rotation="-90 0 0"
+    <a-text id="buttonText" value="Click to draw" position="-0.2 0.50 -1.7" color="black" rotation="-90 0 0"
       width="1.4"></a-text>
 
 
